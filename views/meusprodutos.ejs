@@ -18,8 +18,8 @@
 
 <script>
     // Converte a variável JavaScript em uma string JSON válida.
-    // Ignorar o erro acusado
-    const produtos = <% - JSON.stringify(produtos) %>
+    // Ignorar o erro acusado (<%- JSON.stringify(produtos) %>)
+    const produtos = <%- JSON.stringify(produtos) %>
 
         function criarGrafico() {
             // Extrair labels e dados dos produtos
