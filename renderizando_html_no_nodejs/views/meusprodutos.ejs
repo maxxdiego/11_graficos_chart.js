@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+</head>
+
+<body>
+
+    <h1>Gráfico de Barras</h1>
+    <canvas id="meuGrafico" width="400" height="200"></canvas>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Converte a variável JavaScript em uma string JSON válida.
+    // Ignorar o erro acusado (<%- JSON.stringify(produtos) %>)
+    const produtos = <%- JSON.stringify(produtos) %>
+
+        function criarGrafico() {
+            // Extrair labels e dados dos produtos
+            const labels = produtos.map(produto => produto.nome)
+            const valores = produtos.map(produto => produto.valor)
+
+            // Criação do gráfico
+            const ctx = document.getElementById('meuGrafico').getContext('2d');
+            const meuGrafico = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Valor',
+                        data: valores,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+
+    // Chama a função para criar o gráfico ao carregar a página
+    criarGrafico()
+</script>
+
+</html>
