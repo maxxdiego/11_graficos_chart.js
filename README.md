@@ -32,7 +32,7 @@ npm install
 npm start
 ```
 
-No navegador acessar as aplicações através do localhost:8080.
+No navegador acessar as aplicações através do localhost:8080/produtos.
 
 <hr>
 
